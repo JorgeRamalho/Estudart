@@ -69,36 +69,162 @@
         <div class="logo-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round"
-              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477 4.5 1.253" />
           </svg>
         </div>
         <span class="logo-text">Estudart</span>
         <span class="logo-badge">EAD PRO</span>
       </a>
 
-      <nav aria-label="Navegação Principal">
-        <ul class="nav-links" id="navLinksList">
-          <li><a href="#playerSection" class="nav-link" id="navLinkStream">Streaming</a></li>
-          <li><a href="#coursesSection" class="nav-link" id="navLinkCourses">Trilhas & Cursos</a></li>
-          <li><a href="#practiceSection" class="nav-link" id="navLinkPractice">Exercícios & IA</a></li>
-          <li><a href="docs/benchmark_ead.md" class="nav-link" target="_blank" rel="noopener">Metodologia EAD</a></li>
-        </ul>
-      </nav>
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-      <div class="nav-actions">
-        <!-- CTA da Área do Assinante -->
-        <button class="btn btn-primary" id="openSubscriberModalBtn" data-action="open-subscriber-modal">
-          <span id="userProfileBadge">Área do Assinante</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </button>
+      <div class="nav-mobile-menu" id="navMobileMenu">
+        <nav aria-label="Navegação Principal">
+          <ul class="nav-links" id="navLinksList">
+            <li><a href="#playerSection" class="nav-link" id="navLinkStream">Streaming</a></li>
+            <li><a href="#coursesSection" class="nav-link" id="navLinkCourses">Trilhas & Cursos</a></li>
+            <li><a href="#practiceSection" class="nav-link" id="navLinkPractice">Exercícios & IA</a></li>
+            <li><a href="docs/benchmark_ead.md" class="nav-link" target="_blank" rel="noopener">Metodologia EAD</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="btn btn-primary" id="openSubscriberModalBtn" data-action="open-subscriber-modal">
+            <span id="userProfileBadge">Área do Assinante</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </header>
 
+  <div class="news-ticker-bar" aria-label="Últimas notícias sobre concursos e vestibulares">
+    <div class="ticker-label">
+      <span class="ticker-dot"></span>
+      AO VIVO
+    </div>
+    <div class="ticker-track-wrapper">
+      <ul class="ticker-track" id="tickerTrack" aria-live="polite">
+        <li class="ticker-item"><span class="ticker-tag ticker-tag--concurso">Concurso</span> CEBRASPE · Polícia Federal 2025 — Edital publicado · 6.645 vagas abertas</li>
+        <li class="ticker-item"><span class="ticker-tag ticker-tag--edital">Edital</span> IBGE · Recenseador e Agente Censitário — Inscrições até 30/09/2025</li>
+        <li class="ticker-item"><span class="ticker-tag ticker-tag--vestibular">Vestibular</span> ENEM 2025 — Inscrições encerradas · Prova: 02 e 09/11/2025</li>
+        <li class="ticker-item"><span class="ticker-tag ticker-tag--concurso">Concurso</span> TRF 3ª Região · Analista e Técnico Judiciário — 214 vagas · Prova em outubro</li>
+        <li class="ticker-item"><span class="ticker-tag ticker-tag--vestibular">Vestibular</span> FUVEST 2026 · USP — 1ª Fase: 23/11/2025 · Inscrições abertas</li>
+        <li class="ticker-item"><span class="ticker-tag ticker-tag--edital">Edital</span> INSS · Técnico do Seguro Social — Banca CEBRASPE · 7.072 vagas previstas</li>
+        <li class="ticker-item"><span class="ticker-tag ticker-tag--vestibular">Vestibular</span> SISU 2025.2 · Universidades Federais — Resultado 2ª chamada divulgado</li>
+        <li class="ticker-item"><span class="ticker-tag ticker-tag--concurso">Concurso</span> Receita Federal · Auditor Fiscal — Edital aguardado para Q4/2025</li>
+        <li class="ticker-item"><span class="ticker-tag ticker-tag--edital">Edital</span> Concurso Unificado CPNU 2025 · Bloco 7 — Inscrições abertas · 3.512 vagas</li>
+        <li class="ticker-item"><span class="ticker-tag ticker-tag--vestibular">Vestibular</span> UNICAMP 2026 — 1ª Fase: 19/10/2025 · Gabarito disponível em breve</li>
+      </ul>
+    </div>
+  </div>
+
   <main id="mainContent">
 
+    <!-- Carrossel de Inspiração -->
+    <section class="carousel-section" id="carouselSection" aria-label="Galeria de alunos e professores Estudart">
+      <div class="carousel-viewport" id="carouselViewport">
+        <div class="carousel-track" id="carouselTrack">
+
+          <!-- Slide 1 -->
+          <div class="carousel-slide">
+            <div class="cs-img" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&q=80')"></div>
+            <div class="cs-overlay">
+              <div class="cs-caption">
+                <span class="cs-tag">Concurso Público</span>
+                <p>Alunos da turma de Direito Administrativo celebrando aprovação no TRF</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-slide">
+            <div class="cs-img" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?w=1400&q=80')"></div>
+            <div class="cs-overlay">
+              <div class="cs-caption">
+                <span class="cs-tag">Sala de Estudos</span>
+                <p>Estudantes em sessão colaborativa de revisão para o ENEM</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-slide">
+            <div class="cs-img" style="background-image: url('https://images.unsplash.com/photo-1513258496099-48168024aec0?w=1400&q=80')"></div>
+            <div class="cs-overlay">
+              <div class="cs-caption">
+                <span class="cs-tag">Professores</span>
+                <p>Corpo docente especializado em bancas — CEBRASPE, FCC e Vunesp</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="carousel-slide">
+            <div class="cs-img" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1400&q=80')"></div>
+            <div class="cs-overlay">
+              <div class="cs-caption">
+                <span class="cs-tag">Estudo Online</span>
+                <p>Aluno acessando aulas em streaming pelo computador — 100% digital</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 6 -->
+          <div class="carousel-slide">
+            <div class="cs-img" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400&q=80')"></div>
+            <div class="cs-overlay">
+              <div class="cs-caption">
+                <span class="cs-tag">Grupo de Estudos</span>
+                <p>Turma intensiva de nivelamento em Matemática e Raciocínio Lógico</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 7 -->
+          <div class="carousel-slide">
+            <div class="cs-img" style="background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1400&q=80')"></div>
+            <div class="cs-overlay">
+              <div class="cs-caption">
+                <span class="cs-tag">Concurseiro</span>
+                <p>Estudante concurseiro em preparação intensa para Polícia Federal 2025</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 8 -->
+          <div class="carousel-slide">
+            <div class="cs-img" style="background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1400&q=80')"></div>
+            <div class="cs-overlay">
+              <div class="cs-caption">
+                <span class="cs-tag">Transição de Carreira</span>
+                <p>Profissionais migrando para TI e carreiras federais com trilhas Estudart</p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /carousel-track -->
+      </div><!-- /carousel-viewport -->
+
+      <!-- Controles -->
+      <button class="cs-btn cs-btn--prev" id="csPrev" aria-label="Slide anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button class="cs-btn cs-btn--next" id="csNext" aria-label="Próximo slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+      <!-- Indicadores -->
+      <div class="cs-dots" id="csDots" aria-label="Indicadores de slide" role="tablist"></div>
+    </section>
+
+    <!-- Seção MEC — Ministério da Educação -->
     <!-- Seção Hero -->
     <section class="hero-section" id="heroSection">
       <div class="container hero-grid">
@@ -107,7 +233,7 @@
             <span>✨ O Novo Padrão em Streaming EAD Cognitivo</span>
           </div>
           <h1 class="hero-title">
-            Aprenda com profundidade, <span class="gradient-text">velocidade e afeto</span> de verdade.
+            Aprenda com profundidade, velocidade e afeto de verdade.
           </h1>
           <p class="hero-desc">
             Construído para concurseiros, profissionais em transição e mentes inquietas. Vídeos de 8 a 12 minutos,
@@ -205,6 +331,68 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mec-section" id="mecSection">
+      <div class="container">
+        <div class="section-header" style="text-align: left; margin-bottom: 2.5rem;">
+          <span class="section-pill">Central de Informações</span>
+          <h2 class="section-title">MEC — Ministério da Educação</h2>
+          <p class="section-subtitle" style="margin-inline: 0;">
+            Acesse portais oficiais, materiais didáticos, estudos e contextos sobre educação no Brasil.
+          </p>
+        </div>
+
+        <div class="mec-grid">
+          <a href="https://www.gov.br/mec/pt-br" class="mec-card" target="_blank" rel="noopener">
+            <div class="mec-icon">🏛️</div>
+            <div class="mec-card-content">
+              <h3>Portal do MEC</h3>
+              <p>Site oficial com notícias, programas e políticas educacionais do governo federal.</p>
+            </div>
+          </a>
+
+          <a href="https://www.gov.br/inep/pt-br" class="mec-card" target="_blank" rel="noopener">
+            <div class="mec-icon">📊</div>
+            <div class="mec-card-content">
+              <h3>INEP</h3>
+              <p>Instituto Nacional de Estudos e Pesquisas Educacionais — dados, estatísticas e avaliações.</p>
+            </div>
+          </a>
+
+          <a href="https://www.gov.br/mec/pt-br/area-de-atuacao/avaliacao-e-exames/nacional" class="mec-card" target="_blank" rel="noopener">
+            <div class="mec-icon">📝</div>
+            <div class="mec-card-content">
+              <h3>ENEM</h3>
+              <p>Exame Nacional do Ensino Médio — editais, provas anteriores e resultados.</p>
+            </div>
+          </a>
+
+          <a href="https://sisu.mec.gov.br" class="mec-card" target="_blank" rel="noopener">
+            <div class="mec-icon">🎓</div>
+            <div class="mec-card-content">
+              <h3>SISU</h3>
+              <p>Sistema de Seleção Unificada — vagas em universidades federais pelo SISU.</p>
+            </div>
+          </a>
+
+          <a href="https://www.gov.br/mec/pt-br/area-de-atuacao/ensino-superior/pro-uni" class="mec-card" target="_blank" rel="noopener">
+            <div class="mec-icon">💰</div>
+            <div class="mec-card-content">
+              <h3>ProUni</h3>
+              <p>Programa Universidade para Todos — bolsas de estudo em instituições privadas.</p>
+            </div>
+          </a>
+
+          <a href="https://www.gov.br/mec/pt-br/area-de-atuacao/ensino-superior/fies" class="mec-card" target="_blank" rel="noopener">
+            <div class="mec-icon">🏦</div>
+            <div class="mec-card-content">
+              <h3>FIES</h3>
+              <p>Financiamento Estudantil — financiamento de mensalidades no ensino superior.</p>
+            </div>
+          </a>
         </div>
       </div>
     </section>

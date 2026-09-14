@@ -87,6 +87,42 @@ export const App = {
       instructor: 'Dr. Rafael Monteiro',
       instructorInitial: 'RM',
       topicMarker: 'Regressão, Classificação e Validação Cruzada'
+    },
+    {
+      id: 'excel-produtividade-aperfeicoamento',
+      category: 'aperfeicoamento',
+      badgeClass: 'badge-aperfeicoamento',
+      badgeText: 'Aperfeiçoamento',
+      duration: '10:35 min',
+      title: 'Excel Estratégico: Dados, Dashboards e Decisões',
+      desc: 'Transforme dados em decisões com fórmulas essenciais, tabelas dinâmicas e dashboards objetivos para a rotina profissional.',
+      instructor: 'Prof. Bruno Vasconcelos',
+      instructorInitial: 'BV',
+      topicMarker: 'Tabelas Dinâmicas e Indicadores de Performance'
+    },
+    {
+      id: 'ingles-pratico-nivelamento',
+      category: 'nivelamento',
+      badgeClass: 'badge-nivelamento',
+      badgeText: 'Nivelamento Essencial',
+      duration: '08:40 min',
+      title: 'Inglês Prático: Leitura e Vocabulário para o Dia a Dia',
+      desc: 'Construa uma base segura de vocabulário e interpretação para entender textos, conteúdos digitais e situações reais.',
+      instructor: 'Profª. Juliana Freitas',
+      instructorInitial: 'JF',
+      topicMarker: 'Leitura Estratégica e Cognatos'
+    },
+    {
+      id: 'administracao-publica-concurso',
+      category: 'concurso',
+      badgeClass: 'badge-concurso',
+      badgeText: 'Concurso Público',
+      duration: '12:15 min',
+      title: 'Administração Pública: Atos, Poderes e Responsabilidades',
+      desc: 'Entenda os fundamentos mais cobrados sobre administração direta e indireta, poderes administrativos e responsabilidade civil do Estado.',
+      instructor: 'Prof. Henrique Valença',
+      instructorInitial: 'HV',
+      topicMarker: 'Poder de Polícia e Atos Administrativos'
     }
   ],
 
@@ -101,6 +137,7 @@ export const App = {
 
     this.cacheDOM();
     this.bindEvents();
+    this.initPlayerAnimations();
     this.setupHeroInteractions();
     this.startHeroLiveFeed();
     this.loadPersistedUserData();
@@ -123,9 +160,60 @@ export const App = {
     this.heroPreviewScreen = document.getElementById('heroPreviewScreen');
     this.heroTopicLabel = document.getElementById('heroTopicLabel');
     this.heroLiveFeedBubble = document.getElementById('heroLiveFeedBubble');
+    this.hamburgerBtn = document.getElementById('hamburgerBtn');
+    this.navMobileMenu = document.getElementById('navMobileMenu');
+  },
+
+  initPlayerAnimations() {
+    const playerSection = document.getElementById('playerSection');
+    if (!playerSection) return;
+
+    const revealPlayer = () => playerSection.classList.add('is-visible');
+
+    if (!('IntersectionObserver' in window)) {
+      revealPlayer();
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+      if (!entries[0].isIntersecting) return;
+      revealPlayer();
+      currentObserver.unobserve(playerSection);
+    }, { threshold: 0.18 });
+
+    observer.observe(playerSection);
   },
 
   bindEvents() {
+    // Hamburger Menu Toggle
+    if (this.hamburgerBtn && this.navMobileMenu) {
+      this.hamburgerBtn.addEventListener('click', () => {
+        const isOpen = this.navMobileMenu.classList.toggle('is-open');
+        this.hamburgerBtn.classList.toggle('active', isOpen);
+        this.hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      // Fechar menu ao clicar em links de navegação
+      this.navMobileMenu.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          this.navMobileMenu.classList.remove('is-open');
+          this.hamburgerBtn.classList.remove('active');
+          this.hamburgerBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Fechar menu ao clicar fora
+      document.addEventListener('click', (e) => {
+        if (this.navMobileMenu.classList.contains('is-open') &&
+            !this.navMobileMenu.contains(e.target) &&
+            !this.hamburgerBtn.contains(e.target)) {
+          this.navMobileMenu.classList.remove('is-open');
+          this.hamburgerBtn.classList.remove('active');
+          this.hamburgerBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
     // Filtros de Cursos
     this.filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -329,4 +417,90 @@ export const App = {
 // Inicialização após carregamento do DOM
 document.addEventListener('DOMContentLoaded', () => {
   App.init();
+
+  // Ticker: duplica os itens para scroll contínuo sem corte
+  const track = document.getElementById('tickerTrack');
+  if (track) {
+    const clone = track.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.parentElement.appendChild(clone);
+  }
+});
+
+// =============================================================================
+// CARROSSEL DE INSPIRAÇÃO
+// =============================================================================
+const Carousel = (() => {
+  let current = 0;
+  let autoTimer = null;
+  const INTERVAL = 5000;
+
+  function init() {
+    const track  = document.getElementById('carouselTrack');
+    const slides = track ? Array.from(track.querySelectorAll('.carousel-slide')) : [];
+    const dotsEl = document.getElementById('csDots');
+    const btnPrev = document.getElementById('csPrev');
+    const btnNext = document.getElementById('csNext');
+
+    if (!slides.length) return;
+
+    // Cria dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'cs-dot' + (i === 0 ? ' is-active' : '');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', `Ir para slide ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+
+    function goTo(index) {
+      slides[current].classList.remove('is-active');
+      dotsEl.children[current].classList.remove('is-active');
+
+      current = (index + slides.length) % slides.length;
+
+      slides[current].classList.add('is-active');
+      dotsEl.children[current].classList.add('is-active');
+      track.style.transform = `translateX(-${current * 100}%)`;
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(next, INTERVAL);
+    }
+
+    function stopAuto() {
+      clearInterval(autoTimer);
+    }
+
+    btnNext.addEventListener('click', () => { next(); startAuto(); });
+    btnPrev.addEventListener('click', () => { prev(); startAuto(); });
+
+    // Swipe touch
+    let touchStartX = 0;
+    const viewport = document.getElementById('carouselViewport');
+    viewport.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    viewport.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) { diff > 0 ? next() : prev(); startAuto(); }
+    }, { passive: true });
+
+    // Pausa no hover
+    viewport.addEventListener('mouseenter', stopAuto);
+    viewport.addEventListener('mouseleave', startAuto);
+
+    // Estado inicial
+    goTo(0);
+    startAuto();
+  }
+
+  return { init };
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  Carousel.init();
 });
